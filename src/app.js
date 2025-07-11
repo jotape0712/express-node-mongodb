@@ -1,6 +1,6 @@
 import express from 'express';
 import conectaDataBase from './config/dbConnect.js';
-import usuario from './models/usuario.js';
+import routes from './routes/index.js';
 
 const conexao = await conectaDataBase();
 
@@ -14,20 +14,9 @@ conexao.once("open", () => {
     });
 
 const app = express();
-app.use(express.json()); // Isso é chamado de middleware, que permite que o Express entenda requisições com corpo JSON.
-
+routes(app);
 
 // Rotas 
-
-app.get("/", (req, res) => {
-    res.status(200).send("Node.js");
-});
-
-app.get("/usuarios", async (req, res) => { //async serve para lidar com operações assíncronas, como consultas ao banco de dados.
-    const listaUsuarios =  await usuario.find({}); // await é usado para esperar a resposta da consulta ao banco de dados antes de continuar.
-    // .find é um método do Mongoose que busca todos os documentos na coleção.
-    res.status(200).json(listaUsuarios); // Retorna a lista de usuários em formato JSON.
-});
 
 app.get("/usuarios/:id", (req, res) => {
     const index = buscaUsuario(req.params.id);
