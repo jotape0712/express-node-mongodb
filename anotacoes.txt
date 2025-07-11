@@ -1,0 +1,24 @@
+# Criação 
+- Ir até o CMD
+- Navegar até a pasta escolhida para criar o projeto
+- npm init -y
+- adicionar um "type": "module" no json
+
+## Outros comandos
+- Node server.js // Inicia o servidor
+- npm install nodemon@3.0.1 / Instala a biblioteca nodemon
+    adicionar no json na chave de scripts o "dev": "nodemon server.js".
+- npm run dev // executa o nodemon para fazer ele ouvir as alterações do servidor e reiniciar ele automaticamente.
+
+## Bibliotecas
+
+npm install dotenv 
+Instalar mongodb (terminal)
+Instalar Mongoose (terminal)
+
+
+Instalar o Postman
+
+
+
+
