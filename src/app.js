@@ -18,6 +18,7 @@ app.use(express.json()); // Isso é chamado de middleware, que permite que o Exp
 
 
 // Rotas 
+
 app.get("/", (req, res) => {
     res.status(200).send("Node.js");
 });
