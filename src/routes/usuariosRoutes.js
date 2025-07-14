@@ -9,6 +9,7 @@ routes.get('/usuarios/:id', usuarioController.listarUsuarioPorId);
 routes.post('/usuarios', usuarioController.cadastrarUsuarios);
 routes.put('/usuarios/:id', usuarioController.atualizarUsuario);
 routes.delete('/usuarios/:id', usuarioController.deletarUsuarios);
+routes.post('/login', usuarioController.loginUsuario);
 
 export default routes;
 

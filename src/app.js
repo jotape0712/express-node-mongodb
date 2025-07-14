@@ -1,6 +1,11 @@
 import express from 'express';
 import conectaDataBase from './config/dbConnect.js';
 import routes from './routes/index.js';
+import cors from 'cors';
+
+
+
+
 
 const conexao = await conectaDataBase();
 
@@ -14,6 +19,9 @@ conexao.once("open", () => {
     });
 
 const app = express();
+
+app.use(cors());
+
 routes(app);
 
 export default app;

@@ -44,7 +44,6 @@ class UsuarioController {
         }
     }
 
-    // ...existing code...
     static async deletarUsuarios(req, res) {
         try {
             const id  = req.params.id; 
@@ -54,6 +53,22 @@ class UsuarioController {
             res.status(500).json({ message:`${erro.message} - Falha ao deletar usuario` }); 
         }
     } 
+
+    static async loginUsuario(req, res) {
+    try {
+        const { email, senha } = req.body;
+        const usuarioEncontrado = await usuario.findOne({ email, senha }); 
+        if (usuarioEncontrado) {
+            res.status(200).json({ message: "Login realizado com sucesso", usuario: usuarioEncontrado });
+        } else {
+            res.status(401).json({ message: "E-mail ou senha inválidos" });
+        }
+    } catch (erro) {
+        res.status(500).json({ message: `${erro.message} - Falha ao realizar login` });
+    }
+}
+
+    
 
 } 
 
