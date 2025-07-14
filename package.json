@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
+  "engines" {
+    "Node": "14.x || 16.x || 18.x"
+  },
+  
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
