@@ -16,29 +16,4 @@ conexao.once("open", () => {
 const app = express();
 routes(app);
 
-// Rotas 
-
-app.get("/usuarios/:id", (req, res) => {
-    const index = buscaUsuario(req.params.id);
-    req.params.id ? res.status(200).json(usuarios[index]) : res.status(404).send("Usuário não encontrado!");
-});
-
-app.post("/usuarios", (req, res) => {
-    usuarios.push(req.body);
-    res.status(201).send("Usuário adicionado com sucesso!");
-});
-
-app.put("/usuarios/:id", (req, res) => {
-    const index = buscaUsuario(req.params.id);
-    usuarios[index] = req.body;
-    res.status(200).send("Usuário atualizado com sucesso!");
-});
-
-app.delete("/usuarios/:id", (req, res) => {
-    const index = buscaUsuario(req.params.id);
-    usuarios.splice(index, 1);
-    res.status(200).send("Usuário removido com sucesso!");
-    
-});
-
 export default app;
