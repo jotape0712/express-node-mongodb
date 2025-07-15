@@ -25,13 +25,22 @@ class UsuarioController {
     }
 
     static async cadastrarUsuarios(req, res) {
-        try {
-            const novoUsuario = await usuario.create(req.body); // Cria um novo usuário com os dados do corpo da requisição.
-            res.status(201).json({ message: "Criado com sucesso", usuario: novoUsuario }); // Retorna o usuário criado com status 201.
-        } catch (erro) {
-            res.status(500).json({ message:`${erro.message} - Falha ao cadastrar usuario` }); // Retorna um erro caso a criação falhe.
-            // 500 é o status de erro interno do servidor.
-        }}
+    try {
+        // Validação para garantir que a função é válida
+        const { funcao } = req.body;
+        if (funcao && !['usuario', 'administrador'].includes(funcao)) {
+            return res.status(400).json({ 
+                message: "Função deve ser 'usuario' ou 'administrador'" 
+            });
+        }
+        
+        const novoUsuario = await usuario.create(req.body); // Cria um novo usuário com os dados do corpo da requisição.
+        res.status(201).json({ message: "Criado com sucesso", usuario: novoUsuario }); // Retorna o usuário criado com status 201.
+    } catch (erro) {
+        res.status(500).json({ message:`${erro.message} - Falha ao cadastrar usuario` }); // Retorna um erro caso a criação falhe.
+        // 500 é o status de erro interno do servidor.
+    }
+}
 
     static async atualizarUsuario(req, res) { 
         try {

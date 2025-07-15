@@ -16,6 +16,12 @@ const usuarioSchema = new mongoose.Schema({ // Esquema para o modelo de usuário
     },
     senha: {
         type: String, required: true,
+    },
+    funcao: {
+        type: String, 
+        enum: ['usuario', 'administrador'], // Só aceita esses valores
+        default: 'usuario', // Valor padrão
+        required: true
     }
     }, {versionKey: false}); // Desabilita o versionamento do documento.
 
