@@ -1,7 +1,7 @@
 {
   "name": "express-node-mongodb",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "engines": {
     "Node": "14.x || 16.x || 18.x"
