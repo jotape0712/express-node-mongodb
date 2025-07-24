@@ -22,15 +22,8 @@ const app = express();
 
 
 
-const allowedOrigins = [
-  'http://localhost:5173',
-  'https://express-node-mongodb.vercel.app',
-  'https://futstats-six.vercel.app'
-];
-
 const corsOptions = {
-  origin: allowedOrigins,
-  credentials: true,
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };
