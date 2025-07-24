@@ -22,8 +22,9 @@ const app = express();
 
 
 
+
 const corsOptions = {
-  origin: '*',
+  origin: 'https://futstats-six.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };
