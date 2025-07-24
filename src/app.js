@@ -20,9 +20,23 @@ conexao.once("open", () => {
 
 const app = express();
 
-app.use(cors({
-  origin: 'http://localhost:5173'
-}));
+
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://express-node-mongodb.vercel.app',
+  'https://futstats-six.vercel.app'
+];
+
+const corsOptions = {
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 routes(app);
 
